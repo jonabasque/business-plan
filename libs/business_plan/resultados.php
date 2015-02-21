@@ -1,16 +1,16 @@
 <?php
 
-namespace Asketic\BusinessPlan\Resultados;
+require_once("business_plan.php");
 
-use Mathclass;
+namespace asketic\business_plan\resultados;
 
-class Resultados extends MathCalc {
+class Resultados {
 
-  private $bussinessPlan;
+  private $businessPlan;
 
-  public function __construct(BussinessPlan $plan){
+  public function __construct(BusinessPlan $plan){
 
-    $this->bussinessPlan = $plan;
+    $this->businessPlan = $plan;
 
   }
 
@@ -38,10 +38,10 @@ public function RRHH(){
 
 }
 
-  public function perdidasGanancias(){
+public function perdidasGanancias(){
 
 
-  }
+}
 
 public function tesoreria(){
 	
@@ -69,3 +69,5 @@ public function margenesRatios(){
 
 
 }
+
+$businessPlan = new 
