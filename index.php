@@ -1,9 +1,14 @@
 <?php
 
 //Index
+echo "Planes de negocio";
 
 use BusinessPlan;
 
-$bp = new BusinessPlan;
+echo "Business Plans";
+
+$bp = new BusinessPlan();
+
+echo "Objeto";
 
 echo $bp->type;

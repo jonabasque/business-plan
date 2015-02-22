@@ -8,13 +8,15 @@ use EjercicioFiscal;
 class BusinessPlan extends EjercicioFiscal {
 
   private $user;
+  private $titulo;
   private $sector;
   private $locale = [];
-  private $titulo;
 
-  private $inversion;
+  private $legalEntity;
+
+  private $inversion_inicial; //Incluimos dentro la financiación inicial
+
   private $ejecicios = [];
-  private $RRHH;
 
   public function __construct(User $user, $sector, $locale, $title){
 
