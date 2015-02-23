@@ -1,11 +1,10 @@
 <?php
 
-namespace Asketic\BusinessPlan\BusinesPlan ;
+//require_once("ejercicios_fiscales.php");
 
-use EjercicioFiscal;
+namespace asketic\business_plan\business_plan;
 
-
-class BusinessPlan extends EjercicioFiscal {
+class BusinessPlan {//extends EjercicioFiscal {
 
   private $user;
   private $titulo;
@@ -46,4 +45,17 @@ class BusinessPlan extends EjercicioFiscal {
   }
 
 
-}
+}//fin clase BusinessPlan
+
+//clase usuario
+class User {
+
+	public $nombre;
+
+	public function __construct($nombre = "John Doe"){
+
+		$this->nombre = $nombre;
+
+	}
+
+}//fin clase User
