@@ -20,9 +20,9 @@ echo $user->nombre;
 
 echo "<br \><br \> ---Instancia de un ejercicio fiscal (2016)<br \>";
 
-$ejercicioFiscal = new EjercicioFiscal("mensual","2016");
+$ejercicio1 = new EjercicioFiscal("mensual","2016");
 
-echo $ejercicioFiscal->meses["febrero"].", ".$ejercicioFiscal->type." ";
+echo $ejercicio1->meses["febrero"].", ".$ejercicio1->type." ";
 
 echo "<br \><br \> ---Instancia de un plan de negocio<br \>";
 
@@ -30,21 +30,17 @@ echo "<br \><br \> ---Instancia de un plan de negocio<br \>";
 $locale=["Inglés","EEUU"];
 
 //instancia de un plan de negocio (usamos el alias)
-$planDeNegocio = new BusinessPlan($user,"profesional",$locale,"titulo");
+$businessPlan = new BusinessPlan($user,"Alimentacion",$locale,"Ekodenda");
+
+//agregamos un ejercicio fiscal
+$businessPlan->setEjercicio($ejercicio1);
 
 //var_dump($businessPlan);
 
-echo $planDeNegocio->user->nombre;
-echo "<br \>".$planDeNegocio->sector;
-echo "<br \>".$planDeNegocio->title;
-echo "<br \>[".$planDeNegocio->locale[0].", ".$planDeNegocio->locale[1]."]";
-
-/*use BusinessPlan;
-
-echo "Business Plans";
-
-$bp = new BusinessPlan();
-
-echo "Objeto";
-
-echo $bp->type;*/
+//echo $businessPlan->user->nombre;
+echo "<br />";
+echo $businessPlan->getSector();
+echo "<br />";
+echo $businessPlan->getTitle();
+echo "<br />";
+//echo $businessPlan->getEjercicios();

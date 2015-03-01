@@ -1,13 +1,15 @@
 <?php
 
 //require_once("ejercicios_fiscales.php");
+use asketic\business_plan\business_plan\User as User;
+use asketic\business_plan\ejercicios_fiscales\EjercicioFiscal as EjercicioFiscal;
 
 namespace asketic\business_plan\business_plan;
 
 class BusinessPlan {//extends EjercicioFiscal {
 
   private $user;
-  private $titulo;
+  private $title;
   private $sector;
   private $locale = [];
 
@@ -15,7 +17,7 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   private $inversion_inicial; //Incluimos dentro la financiación inicial
 
-  private $ejecicios = [];
+  private $ejercicios = [];
 
   public function __construct(User $user, $sector, $locale, $title){
 
@@ -32,9 +34,9 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   }
 
-  public function setEjercicio( $ejercicio){
+  public function setEjercicio(EjercicioFiscal $ejercicio){
 
-    $this->ejercicios[] = $ejercicios;
+    $this->ejercicios[] = $ejercicio;
 
   }
 
@@ -44,6 +46,23 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   }
 
+  public function getTitle(){
+
+    return $this->title;
+
+  }
+
+  public function getSector(){
+
+    return $this->sector;
+
+  }
+
+  public function getEjercicios(){
+
+    return $this->ejercicios;
+
+  }
 
 }//fin clase BusinessPlan
 
