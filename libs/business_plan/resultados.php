@@ -2,7 +2,7 @@
 
 require_once("business_plan.php");
 
-namespace asketic\business_plan\resultados;
+namespace asketic\business_plan;
 
 class Resultados {
 

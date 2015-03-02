@@ -1,10 +1,10 @@
 <?php
 
 //require_once("ejercicios_fiscales.php");
-use asketic\business_plan\business_plan\User as User;
-use asketic\business_plan\ejercicios_fiscales\EjercicioFiscal as EjercicioFiscal;
+use asketic\business_plan\User as User;
+use asketic\business_plan\EjercicioFiscal as EjercicioFiscal;
 
-namespace asketic\business_plan\business_plan;
+namespace asketic\business_plan;
 
 class BusinessPlan {//extends EjercicioFiscal {
 
@@ -60,7 +60,7 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   public function getEjercicios(){
 
-    return $this->ejercicios;
+      return $this->ejercicios;
 
   }
 

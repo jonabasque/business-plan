@@ -1,6 +1,6 @@
 <?php
 
-namespace asketic\business_plan\ejercicios_fiscales;
+namespace asketic\business_plan;
 
 class EjercicioFiscal {
 

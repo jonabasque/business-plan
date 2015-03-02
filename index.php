@@ -6,9 +6,9 @@ echo "Planes de negocio";
 require_once("libs/business_plan/business_plan.php");
 require_once("libs/business_plan/ejercicios_fiscales.php");
 
-use asketic\business_plan\business_plan\User as User;
-use asketic\business_plan\ejercicios_fiscales\EjercicioFiscal as EjercicioFiscal;
-use asketic\business_plan\business_plan\BusinessPlan as BusinessPlan;
+use asketic\business_plan\User as User;
+use asketic\business_plan\EjercicioFiscal as EjercicioFiscal;
+use asketic\business_plan\BusinessPlan as BusinessPlan;
 
 echo "<br \>ESTE ES EL INDICE DE LA APLICACION<br \>";
 
@@ -32,6 +32,8 @@ $locale=["Inglés","EEUU"];
 //instancia de un plan de negocio (usamos el alias)
 $businessPlan = new BusinessPlan($user,"Alimentacion",$locale,"Ekodenda");
 
+var_dump($ejercicio1);
+
 //agregamos un ejercicio fiscal
 $businessPlan->setEjercicio($ejercicio1);
 
@@ -43,4 +45,4 @@ echo $businessPlan->getSector();
 echo "<br />";
 echo $businessPlan->getTitle();
 echo "<br />";
-//echo $businessPlan->getEjercicios();
+echo $businessPlan->getEjercicios(0);
