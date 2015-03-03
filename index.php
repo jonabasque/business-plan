@@ -23,6 +23,8 @@ echo "<br \><br \> ---Instancia de un ejercicio fiscal (2016)<br \>";
 $ejercicio1 = new EjercicioFiscal("mensual","2016");
 
 echo $ejercicio1->meses["febrero"].", ".$ejercicio1->type." ";
+echo "<br />";
+var_dump($ejercicio1->compras);
 
 echo "<br \><br \> ---Instancia de un plan de negocio<br \>";
 
