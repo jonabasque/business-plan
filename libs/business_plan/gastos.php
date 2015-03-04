@@ -4,7 +4,7 @@ namespace asketic\business_plan;
 
 require_once("registro.php");
 
-class Venta extends Registro{
+class Gastos extends Registro{
 
   public function __construct($code, $concept, $imp, $units ){
 

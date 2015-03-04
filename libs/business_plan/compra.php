@@ -2,16 +2,13 @@
 
 namespace asketic\business_plan;
 
-class Compra{
+require_once("registro.php");
 
-  private $id;
-  private $code;
-  public $date;
-  private $concept;
-  private $imp;
-  private $units;
+class Compra extends Registro{
 
   public function __construct($code, $concept, $imp, $units ){
+
+    parent::__construct($code, $concept, $imp, $units );
 
     $this->code = $code;
     $this->date = getdate();
