@@ -22,8 +22,14 @@ echo "<br \><br \> ---Instancia de un ejercicio fiscal (2016)<br \>";
 
 $ejercicio1 = new EjercicioFiscal("mensual","2016");
 
-echo $ejercicio1->meses["febrero"].", ".$ejercicio1->type." ";
+echo $ejercicio1->meses["February"].", ".$ejercicio1->type." ";
 echo "<br />";
+
+$code = "C01";
+$concept = "Compra de licencia de Windows";
+$importe = 100;
+$units = 5;
+$ejercicio1->setCompra($code, $concept, $importe, $units);
 var_dump($ejercicio1->compras);
 
 echo "<br \><br \> ---Instancia de un plan de negocio<br \>";
@@ -48,3 +54,4 @@ echo "<br />";
 echo $businessPlan->getTitle();
 echo "<br />";
 echo $businessPlan->getEjercicios(0);
+echo "<br />";

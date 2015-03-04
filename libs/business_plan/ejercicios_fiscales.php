@@ -1,35 +1,40 @@
 <?php
-
 namespace asketic\business_plan;
+
+require_once("compra.php");
+
+use asketic\business_plan\Compra as Compra;
 
 class EjercicioFiscal {
 
-  private $period; //Mes de inicio. O PUEDE EMPEZAR CUALQUIER DIA DEL MES?
+  private $started; //Mes de inicio. O PUEDE EMPEZAR CUALQUIER DIA DEL MES?
 
   public $year;
 
   public $type = "anual";
 
-  public $meses = ["enero" => 31, "febrero" => 28, "marzo" => 31, "abril" => 30,
-                    "mayo" => 31, "junio" => 30, "julio" => 31, "agosto" => 31, "septiembre" => 30,
-                    "octubre" => 31, "noviembre" => 30, "diciembre" => 31];
+  public $meses = ["January" => 31, "February" => 28, "March" => 31, "April" => 30,
+                    "May" => 31, "June" => 30, "July" => 31, "August" => 31, "September" => 30,
+                    "October" => 31, "November" => 30, "December" => 31];
 
   //Datos que recoge el Plan General Contable por día. (contabilidad)
-  public $compras = []; //guardará un objeto por dia empezando por el primero del inicio fiscal
-  protected $ventas = []; //igual que gastos. Cada objeto tiene atributos: codigo, descripcion, fecha, concepto, importe, unidades.
+  //guardará un objeto por dia ¿¿O POR TRANSACCION MEJOR?? empezando por el primero del inicio fiscal
+  //Cada objeto tiene atributos: codigo, descripcion, fecha, concepto, importe, unidades.
+  public $compras = [];
+  protected $ventas = [];
   protected $RRHH   = [];
   protected $gastos = [];
   protected $inversion = []; //incluye la financiación, y la inversion en inmovilizado. Se invertir en cualquier momento.
 
-  public function __construct($type, $year, $period = "agosto"){
+  public function __construct($type, $year, $started = "August"){
 
     $this->type = $type;
     $this->year = $year;
-    $this->period = $period;
+    $this->started = $started;
 
     if($this->isFebruaryDays($this->year)){
 
-       $this->meses["febrero"] = 29;
+       $this->meses["February"] = 29;
 
     }
 
@@ -46,7 +51,7 @@ class EjercicioFiscal {
     foreach($this->meses as $key => $value){
 
       //necesito que empiece cuando sea igual al periodo y continue hasta el final.
-      if($key == $this->period){
+      if($key == $this->started){
         $this->compras[$key] = [];
         $this->ventas[$key] = [];
         $this->RRHH[$key] = [];
@@ -69,13 +74,31 @@ class EjercicioFiscal {
         $this->gastos[$key] = [];
       }
     }
+
+
+    foreach($this->meses as $mes => $days){
+
+      for($i = 1; $i <= $days; $i++){
+        $this->compras[$mes][$i] = [];
+        $this->ventas[$mes][$i] = [];
+        $this->gastos[$mes][$i] = [];
+        $this->RRHH[$mes][$i] = [];
+
+      }
+
+    }
+
   }
 
 
-  public function setCompras(ComprasDay $comprasDay){
+  //Guarda cada compra en el array del día
+  public function setCompra($code, $concept, $importe, $units){
 
-
-    $this->compras[$comprasDay->mes][] = $comprasDay;
+    $compra = new Compra($code, $concept, $importe, $units);
+    //comprobar día para insertar en el día que sea.
+    $mes = $compra->date['month'];
+    $day = $compra->date['mday'];
+    $this->compras[$mes][$day][] = $compra;
 
   }
 
