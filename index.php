@@ -9,6 +9,7 @@ require_once("libs/business_plan/ejercicios_fiscales.php");
 use asketic\business_plan\User as User;
 use asketic\business_plan\EjercicioFiscal as EjercicioFiscal;
 use asketic\business_plan\BusinessPlan as BusinessPlan;
+use asketic\business_plan\Compras as Compras;
 
 echo "<br \>ESTE ES EL INDICE DE LA APLICACION<br \>";
 
@@ -30,6 +31,10 @@ $concept = "Compra de licencia de Windows";
 $importe = 100;
 $units = 5;
 $ejercicio1->setCompra($code, $concept, $importe, $units);
+var_dump($ejercicio1->compras);
+
+$compra = $ejercicio1->getCompra("C01");
+$compra->date = $compra->updateDate("12/07/2030");
 var_dump($ejercicio1->compras);
 
 echo "<br \><br \> ---Instancia de un plan de negocio<br \>";

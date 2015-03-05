@@ -1,7 +1,7 @@
 <?php
 namespace asketic\business_plan;
 
-require_once("registro.php");
+require("registro.php");
 
 class RecursosHumanos extends Registro{
 

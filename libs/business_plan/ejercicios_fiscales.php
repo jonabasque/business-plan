@@ -102,6 +102,20 @@ class EjercicioFiscal {
 
   }
 
+  public function getCompra($code){
+
+    foreach($this->compras as $month => $mes){
+      foreach($mes as $day => $dia){
+        foreach($dia as $registro ){
+          if($code == $registro->code){
+            return $registro;
+          }
+        }
+      }
+    }
+
+  }
+
 
   //Devolvemos true si es bisiesto
   private function isFebruaryDays($year){
