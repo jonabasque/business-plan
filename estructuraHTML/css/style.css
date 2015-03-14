@@ -1,0 +1,123 @@
+
+*{
+
+/*border: 1px solid black;*/
+
+}
+
+.hide{
+
+	display:none;
+}
+
+body{
+	background:#bbe2e9;
+}
+
+header{
+	display:flex;
+	justify-content:space-between;
+	background:#002255;
+	color:white;
+	width:100%;
+}
+
+#title{
+
+	width:100%;
+	text-align:center;
+	color:black;
+	font-weight:bold;
+	margin-bottom:15px;
+}
+
+section{
+	margin-left:-40px;
+	/*background: red;*/
+
+}
+
+section nav #ejercicios_fiscales{
+	text-decoration:none;
+	display:flex;
+}
+
+section nav #ejercicios_fiscales li{
+	height:15px;
+	width:20%;
+	background:#2f8391;
+	padding:10px 1.67%;
+	margin-right:5px;
+	text-align:center;
+	
+}
+
+section nav #ejercicios_fiscales li a, 
+section nav #opciones li a,
+section #meses li a,
+section #btn_resultados li a{ 
+	text-decoration:none;
+	display:block;
+	color:black;
+}
+
+section nav #ejercicios_fiscales li, 
+section nav #informes li, 
+section nav #opciones li,
+section #meses li,
+section #btn_resultados li{
+	list-style:none;
+}
+
+section nav #opciones{
+	width:40%;
+	/*background:blue;*/
+}
+
+section nav #opciones li{
+	padding:5px 5px;
+	background:#2f8391;
+	text-align:center;
+	margin-bottom: 1px;
+
+}
+
+section #meses{
+	width:80%;
+	margin:0 auto;
+	margin-bottom:20px;
+
+}
+
+section #meses li{
+	padding:5px 5px;
+	background:#2f8391;
+	text-align:center;
+	margin-bottom: 1px;
+
+}
+
+section #btn_resultados{
+	width:20%;
+	margin:0 auto;
+	margin-bottom:20px;
+	display:flex;
+	justify-content:space-between;
+
+}
+
+section #btn_resultados li{
+	padding:5px 5px;
+	background:#2f8391;
+	text-align:center;
+	margin-bottom: 1px;
+
+}
+
+footer{
+	display:flex;
+	justify-content:space-between;
+	background:#002255;
+	color:white;
+	width:100%;
+}

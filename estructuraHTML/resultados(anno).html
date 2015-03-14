@@ -4,7 +4,9 @@
 
 	<head>
 
-		<title>Página principal</title>
+		<meta charset="UTF-8">
+		<title>Resultados(anuales)</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 	</head>
 
@@ -12,8 +14,8 @@
 
 		<header>
 
-			<div id="logo"><img /></div>
-			<div id="businessplan_name"></div>
+			<div id="logo"><!--<img />-->Logo</div>
+			<div id="businessplan_name">Nombre del Plan de negocio</div>
 
 		</header>
 
@@ -21,14 +23,14 @@
 
 			<nav>
 					
-				<ul id ="ejercicios fiscales">
+				<ul id ="ejercicios_fiscales">
 
-					<li><a href="#" id="ant_ejercicio"><img /></a></li>
+					<!--<li><a href="#" id="ant_ejercicio"><img /></a></li>-->
 					<li><a href="#">2015</a></li>
 					<li><a href="#">2016</a></li>
 					<li><a href="#">2017</a></li>
 					<li><a href="#">2018</a></li>
-					<li><a href="#" id="sig_ejercicio"><img /></a></li>
+					<!--<li><a href="#" id="sig_ejercicio"><img /></a></li>-->
 					<li><a href="#"><img />NUEVO</a></li>
 
 				</ul>
@@ -37,7 +39,7 @@
 
 			<nav>
 
-				<ul id ="informes">
+				<ul id ="informes" class="hide">
 
 					<li><a href="#"><img />BALANCE</a></li>
 					<li><a href="#"><img />P y G</a></li>
@@ -52,7 +54,7 @@
 
 			<nav>
 				
-				<ul>
+				<ul id="opciones" class="hide">
 				
 					<li><a href="#">GASTOS</a></li>
 					<li><a href="#">COMPRAS</a></li>
@@ -67,11 +69,20 @@
 
 		</section>
 
-		<main>GASTOS</main>
+		<div id="title">RESULTADOS</div>
+
+		<section>
+
+			<ul id="btn_resultados">
+				<li><a href="#">MES</a></li>
+				<li><a href="#">AÑO</a></li>
+			</ul>
+
+		</section>
 
 		<section><!-- Contiene los meses -->
 			
-			<ul>
+			<ul id="meses">
 			
 				<li><div><a href="#">ENERO</a></div><div><img /></div></li>
 				<li><a href="#">FEBRERO</a></div><div><img /></div></li>
@@ -90,7 +101,7 @@
 
 		</section>
 
-		<section>
+		<section class="hide">
 			
 			<ul>
 			
