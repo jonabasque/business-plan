@@ -1,7 +1,7 @@
 <?php
 namespace asketic\business_plan;
 
-abstract class Registro{
+class Registro{
 
   private $id;
   public $date;
