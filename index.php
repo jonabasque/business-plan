@@ -5,6 +5,7 @@ echo "Planes de negocio";
 
 require_once("libs/business_plan/business_plan.php");
 require_once("libs/business_plan/ejercicios_fiscales.php");
+require_once("libs/dojo-calculadora/class/calculadora.php");
 
 use asketic\business_plan\User as User;
 use asketic\business_plan\EjercicioFiscal as EjercicioFiscal;
@@ -60,3 +61,16 @@ echo $businessPlan->getTitle();
 echo "<br />";
 echo $businessPlan->getEjercicios(0);
 echo "<br />";
+
+echo "<br /><br />";
+
+$calculadora = new Calculadora();
+
+$numeros=[1,5,2,8,6];
+
+//calculo y formateo del resultado de la division
+echo "<br>division: ".number_format($calculadora->division(8,3),2);
+echo "<br>producto: ".number_format($calculadora->producto($numeros),2);
+echo "<br>suma: ".$calculadora->suma($numeros);
+echo "<br>resta: ".number_format($calculadora->resta(8,3.5),2);
+echo "<br>porcentaje: ".number_format($calculadora->porcentaje(10,20),2);
