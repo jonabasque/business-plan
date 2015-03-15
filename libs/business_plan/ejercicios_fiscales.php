@@ -2,8 +2,10 @@
 namespace asketic\business_plan;
 
 require_once("compra.php");
+require_once("venta.php");
 
 use asketic\business_plan\Compra as Compra;
+use asketic\business_plan\Venta as Venta;
 
 class EjercicioFiscal {
 
