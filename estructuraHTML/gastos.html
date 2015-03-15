@@ -3,7 +3,6 @@
 <html>
 
 	<head>
-
 		<meta charset="UTF-8">
 		<title>Gastos</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -31,7 +30,8 @@
 					<li><a href="#">2017</a></li>
 					<li><a href="#">2018</a></li>
 					<!--<li><a href="#" id="sig_ejercicio"><img /></a></li>-->
-					<li><a href="#"><img />NUEVO</a></li>
+					<li id="ejercicio_mas"><a href="#">+</a></li>
+					<li id="ejercicio_nuevo"><a href="#">NUEVO</a></li>
 
 				</ul>
 
@@ -54,7 +54,7 @@
 
 			<nav>
 				
-				<ul id="opciones" class="hide">
+				<ul id="opciones_hide">
 				
 					<li><a href="#">GASTOS</a></li>
 					<li><a href="#">COMPRAS</a></li>
@@ -76,6 +76,39 @@
 			<ul id="meses">
 			
 				<li><div><a href="#">ENERO</a></div><div><img /></div></li>
+
+				<ul id="dias_del_mes_movil">
+						
+					<li><div class="dia_mes">1</div><!-- Ejemplo para un día -->
+
+						<ul>
+
+							<li>
+
+								<div>Factura de electricidad</div>
+								<div>80€</div>
+
+							</li>
+
+							<li>
+
+								<div>Alquiler mes</div>
+								<div>500€</div>
+
+							</li>
+
+							<li class="total_dia">
+
+								<div >Total</div>
+								<div>580€</div>
+
+							</li>
+
+						</ul>
+					</li>
+
+				</ul>
+
 				<li><a href="#">FEBRERO</a></div><div><img /></div></li>
 				<li><a href="#">MARZO</a></div><div><img /></div></li>
 				<li><a href="#">ABRIL</a></div><div><img /></div></li>
@@ -92,9 +125,9 @@
 
 		</section>
 
-		<section class="hide">
+		<section>
 
-			<ul>
+			<ul id="dias_del_mes_desktop">
 						
 				<li><div class="dia_mes">1</div><!-- Ejemplo para un día -->
 
@@ -142,7 +175,7 @@
 
 				<li>T<!-- Ejemplo para el total de gastos del mes -->
 
-					<div class="total_mes">826€</div>
+					<div class="total_mes">6026€</div>
 
 				</li>
 
@@ -150,11 +183,11 @@
 
 		</section>
 
-		<footer>
+			<footer>
 
-			Pie
+				Pie
 
-		</footer>
+			</footer>
 
 	</body>
 
