@@ -209,12 +209,33 @@ DISPOSITIVOS MOVILES
 		display:none;
 	}
 
-	main #opciones li{
+	main{
+		width:120%;
+		/webkit-transition: margin 1s; /* Safari */
+    	transition: margin 1s;
+
+	}
+
+	main:hover{
+		margin-left:-25%;
+	}
+
+	/*main #principal:hover{
+		margin-top:-225px;
+		margin-right:0%;
+		margin-left:0%;
+	}*/
+
+	main #nav-operaciones{
+		margin-top:50px;
+	}
+
+	main #nav-operaciones #opciones li{
+		width:20%;
 		display:list-item;
 	}
 
 	main #nav-operaciones #opciones li a{
-		margin-left:10px;
 	}
 
 	/**************************************/
@@ -242,14 +263,22 @@ DISPOSITIVOS MOVILES
 
 	/**************************************/
 
+	#principal{
+		margin-top:-255px;
+	}
+
 	section h2{
 		display:block;
 	}
 
 	section article{
-		width:80%;
-		margin:0 auto;
+		width:60%;
 		margin-bottom:1px;
+		margin-left:40%;
+	}
+
+	section .meses{
+		margin-top:30px;
 	}
 
 	section article #dias_del_mes_movil, section article footer{
