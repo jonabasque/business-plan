@@ -1,453 +1,259 @@
 
 *{
 
-/*border: 1px solid black;*/
-
+	margin:0px;
+	padding: 0px;
+	list-style:none;
+	text-decoration:none;
+	font-size:16px;
+	color:black;
 }
-
-
-
-@media only screen and (min-width : 721px) {
-
-}
-
-
-@media only screen and (min-width : 480px) and (max-width : 720px){
 
 	body{
-		background:#bbe2e9;
+		background:#231c18;
 	}
 
 	header{
-		display:flex;
-		justify-content:space-between;
 		background:#002255;
 		color:white;
-		width:100%;
+		padding:9px 0px 9px 0px;
 	}
 
-	header div{
-		padding:5px 20px;
+	header img{
+		width:50px;
+		height:50px;
+		margin:15px 0px 0px 15px;
 	}
 
-	#title{
-
-		width:100%;
-		text-align:center;
-		color:black;
-		font-weight:bold;
-		margin-bottom:15px;
+	header h2{
+		display:inline;
+		margin:-10px 20px 10px 20px;
+		font-size:2em;
+		color:white;
 	}
 
-	section{
-		margin-left:-40px;
-		/*background: red;*/
-
+	header nav{
+		margin-top:30px;
+		display:block;
+		margin-bottom:-1px;
 	}
 
-	section nav #ejercicios_fiscales{
-		text-decoration:none;
-		display:flex;
-		margin-right:-5px;
-		font-weight:bold;
+	header nav ul{
+		margin-top:11px;
 	}
 
-	section nav #ejercicios_fiscales li{
+	header #nav-ejercicios ul li{
 		height:15px;
 		width:20%;
 		background:#2f8391;
-		padding:10px 2%;
-		margin-right:5px;
+		padding:8px 2%;
 		text-align:center;
-		
+		display:inline;
 	}
 
-	section nav #ejercicios_fiscales #ant_ejercicio, section nav #ejercicios_fiscales #sig_ejercicio{
-		
-	}
-
-	section nav #ejercicios_fiscales #ejercicio_mas{
+	header nav ul #ejercicio_mas{
 		display:none;
 	}
 
-	section nav #ejercicios_fiscales li a, 
-	section nav #opciones li a,
-	section #meses li a,
-	section #btn_resultados li a{ 
-		text-decoration:none;
-		display:block;
-		color:black;
+
+/*******************************************/
+
+	main{
+		margin-bottom:60px;
 	}
 
-	section nav #ejercicios_fiscales li, 
-	section nav #informes li, 
-	section nav #opciones li,
-	section #meses li,
-	section #btn_resultados li{
+	main section h2{
+		text-align:center;
+		margin-bottom:20px;
+		font-size:1.5em;
+		color:#bbe2e9;
+	}
+
+	main #nav-operaciones{
+		margin: 20px 0px;
+	}
+
+	main #opciones li{
+		height:15px;
+		width:40%;
+		min-width:170px;
+		background:#2f8391;
+		padding:10px 2%;
+		text-align:left;
+		margin-bottom:1px;
+		display:inline;
+
+	}
+
+	main #nav-operaciones #opciones li img{
+		width:20px;
+		height:20px;
+	}
+
+	main #nav-operaciones #opciones li a{
+		margin-left:10px;
+	}
+
+	section h2{
+		display:none;
+	}
+
+	section article{
+		width:20%;
+		min-width:200px;
+		margin-bottom:1px;
+	}
+
+	section .meses{
+		margin-top:30px;
+	}
+
+	section article header{
+		background:#2f8391;
+		padding-left:10px;
+	}
+
+	section article #dias_del_mes_movil, section article footer{
+		display:none;
+	}
+
+	section article #dias_del_mes_movil li{
+		padding:5px 5px;
+		background:#88ced9;
+		text-align:center;
+		margin-bottom: 2px;
+		display:flex;
+		justify-content:space-between;
+	}
+
+	section article #dias_del_mes_movil li .dia_mes{
+		background:#2f8391;
+		font-weight:bold;
+		position:absolute;
+		padding:4.5px 10px;
+	}
+
+	section article #dias_del_mes_movil li ul{
+		width:90%;
+	}
+
+	section article #dias_del_mes_movil li ul li{
+		background:#bbe2e9;
+		display:flex;
+		justify-content:space-between;
+	}
+
+	section article #dias_del_mes_movil li ul .total_dia{
+		border-top:3px solid #88ced9;
+		font-weight:bold;
+	}
+
+	section article footer{
+		background:#88ced9;
+		padding-bottom:0px;
+	}
+
+	section article footer menu ul li{
+		background:#bbe2e9;
+	}
+
+	footer{
+			background:#002255;
+			color:white;
+			padding:10px;
+
+		}
+
+	footer ul{
 		list-style:none;
 	}
 
-	section nav #informes{
+	footer ul li{
+		display:inline;
+		padding:5px;
+		background:#2f8391;
+	}
+
+	.bottom { 
+		position: fixed; 
+		text-align: center; 
+		width: 100%; 
+		bottom: 0px;
+	}
+
+
+/**********************************************
+
+DISPOSITIVOS MOVILES
+
+**********************************************/
+
+@media only screen and (max-width : 720px) {
+
+	header img{
+		width:30px;
+		height:30px;
+		margin-left:5px;
+	}
+
+	header h2{
+		padding:20px;
+		font-size:1em;
+	}
+
+	header nav ul{
+		margin-top:11px;
+	}
+
+	header nav ul #ejercicio_nuevo{
 		display:none;
 	}
 
-	section nav #opciones{
-		width:40%;
-		/*background:blue;*/
+	main #opciones li{
+		display:list-item;
 	}
 
-	section nav #opciones li, section nav #opciones_compacto li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:left;
-		margin-bottom: 1px;
-		display:flex;
-
+	main #nav-operaciones #opciones li a{
+		margin-left:10px;
 	}
 
-	section nav #opciones_compacto{
-		float:left;
+	/**************************************/
+
+	main .pares #opciones{
+		margin-left:8%;
 	}
 
-	section nav #opciones_compacto li{
-		width:30px;
-	}
-
-	section nav #opciones li a{
-		margin-left:10%;
+	main .pares #opciones li{
+		height:40px;
+		width:37%;
+		display:inline-block;
+		margin-bottom:10px;
 		
 	}
 
-	section nav #opciones_compacto li img, section nav #opciones li img{
+	main .pares #opciones li:nth-child(odd){
+		margin-right:8%;
+	}
+
+	main .pares #opciones li img{
 		width:30px;
 		height:30px;
 	}
 
-	section nav #opciones_hide{
-		display:none;
-	}
+	/**************************************/
 
-	section #meses{
-		width:80%;
-		margin:0 auto;
-		margin-bottom:20px;
-
-	}
-
-	section #meses li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:center;
-		margin-bottom: 1px;
-
-	}
-
-
-	section #meses #dias_del_mes_movil{
-		margin-left:-5px;
-	}
-
-	section #meses #dias_del_mes_movil li{
-		text-align:left;
-		/*margin-left:-40px;*/
-		background:#88ced9;
-	}
-
-	section #meses #dias_del_mes_movil li .dia_mes{
-		margin-left:-40px;
-		background:#2f8391;
-		float:left;
-		padding:8px 11px;
-		margin-top:-5px;
-		font-weight:bold;
-	}
-
-	section #meses #dias_del_mes_movil li ul{
-		margin-left:-40px;
-	}
-
-	section #meses #dias_del_mes_movil li ul li{
-		background:#bbe2e9;
-		margin-top:1px;
-		display:flex;
-		justify-content:space-between;
-	}
-
-	section #meses #dias_del_mes_movil li ul .total_dia{
-		border-top:3px solid #88ced9;
-		font-weight:bold;
-		/*background:#2f8391;*/	
-	}
-
-	section #meses #resultados_movil{
-		margin-left:-40px;
-	}
-
-	section #meses #resultados_movil li{
-		background:#88ced9;
-		margin-top:1px;
-		display:flex;
-		justify-content:space-between;
-	}
-
-	section #meses #resultados_movil .total_final{
-		border-top:3px solid #2f8391;
-		font-weight:bold;
-		margin-top:-1px;
-		/*background:#2f8391;*/	
-	}
-
-	section #dias_del_mes_desktop{
-
-		display:none;
-	}
-
-	section #btn_resultados{
-		width:40%;
-		margin:0 auto;
-		margin-bottom:20px;
-		display:flex;
-		justify-content:space-between;
-
-	}
-
-	section #btn_resultados li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:center;
-		margin-bottom: 1px;
-
-	}
-
-	footer{
-		display:flex;
-		justify-content:space-between;
-		background:#002255;
-		color:white;
-		width:100%;
-	}
-
-}
-
-
-@media only screen and (max-width : 480px) {
-
-	body{
-		background:#bbe2e9;
-	}
-
-	header{
-		display:flex;
-		justify-content:space-between;
-		background:#002255;
-		color:white;
-		width:100%;
-	}
-
-	header div{
-		padding:5px 20px;
-	}
-
-	#title{
-
-		width:100%;
-		text-align:center;
-		color:black;
-		font-weight:bold;
-		margin-bottom:15px;
-	}
-
-	section{
-		margin-left:-40px;
-		/*background: red;*/
-
-	}
-
-	section nav #ejercicios_fiscales{
-		text-decoration:none;
-		display:flex;
-		margin-right:-5px;
-		font-weight:bold;
-	}
-
-	section nav #ejercicios_fiscales li{
-		height:15px;
-		width:20%;
-		background:#2f8391;
-		padding:10px 2%;
-		margin-right:5px;
-		text-align:center;
-		
-	}
-
-	section nav #ejercicios_fiscales #ant_ejercicio, section nav #ejercicios_fiscales #sig_ejercicio{
-		display:none;
-	}
-
-	section nav #ejercicios_fiscales #ejercicio_nuevo{
-		display:none;
-	}
-
-	section nav #ejercicios_fiscales li a, 
-	section nav #opciones li a,
-	section #meses li a,
-	section #btn_resultados li a{ 
-		text-decoration:none;
+	section h2{
 		display:block;
-		color:black;
 	}
 
-	section nav #ejercicios_fiscales li, 
-	section nav #informes li, 
-	section nav #opciones li,
-	section #meses li,
-	section #btn_resultados li{
-		list-style:none;
-	}
-
-	section nav #informes{
-		display:none;
-	}
-
-	section nav #opciones{
-		width:40%;
-		/*background:blue;*/
-	}
-
-	section nav #opciones li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:center;
-		margin-bottom: 1px;
-
-	}
-
-	section nav #opciones_hide{
-		display:none;
-	}
-
-	section #meses{
+	section article{
 		width:80%;
 		margin:0 auto;
-		margin-bottom:20px;
-
+		margin-bottom:1px;
 	}
 
-	section #meses li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:center;
-		margin-bottom: 1px;
-
-	}
-
-
-	section #meses #dias_del_mes_movil{
-		margin-left:-5px;
-	}
-
-	section #meses #dias_del_mes_movil li{
-		text-align:left;
-		/*margin-left:-40px;*/
-		background:#88ced9;
-	}
-
-	section #meses #dias_del_mes_movil li .dia_mes{
-		margin-left:-40px;
-		background:#2f8391;
-		float:left;
-		padding:8px 11px;
-		margin-top:-5px;
-		font-weight:bold;
-	}
-
-	section #meses #dias_del_mes_movil li ul{
-		margin-left:-40px;
-	}
-
-	section #meses #dias_del_mes_movil li ul li{
-		background:#bbe2e9;
-		margin-top:1px;
-		display:flex;
-		justify-content:space-between;
-	}
-
-	section #meses #dias_del_mes_movil li ul .total_dia{
-		border-top:3px solid #88ced9;
-		font-weight:bold;
-		/*background:#2f8391;*/	
-	}
-
-	section #meses #resultados_movil{
-		margin-left:-40px;
-	}
-
-	section #meses #resultados_movil li{
-		background:#88ced9;
-		margin-top:1px;
-		display:flex;
-		justify-content:space-between;
-	}
-
-	section #meses #resultados_movil .total_final{
-		border-top:3px solid #2f8391;
-		font-weight:bold;
-		margin-top:-1px;
-		/*background:#2f8391;*/	
-	}
-
-	section #dias_del_mes_desktop{
-
-		display:none;
-	}
-
-	section #btn_resultados{
-		width:40%;
-		margin:0 auto;
-		margin-bottom:20px;
-		display:flex;
-		justify-content:space-between;
-
-	}
-
-	section #btn_resultados li{
-		padding:5px 5px;
-		background:#2f8391;
-		text-align:center;
-		margin-bottom: 1px;
-
-	}
-
-	footer{
-		display:flex;
-		justify-content:space-between;
-		background:#002255;
-		color:white;
-		width:100%;
+	section article #dias_del_mes_movil, section article footer{
+		display:block;
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-} 
