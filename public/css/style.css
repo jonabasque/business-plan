@@ -76,13 +76,11 @@
 	main #opciones li{
 		height:15px;
 		width:40%;
-		min-width:170px;
 		background:#2f8391;
 		padding:10px 2%;
 		text-align:left;
 		margin-bottom:1px;
 		display:inline;
-
 	}
 
 	main #nav-operaciones #opciones li img{
@@ -128,7 +126,6 @@
 
 	section article #dias_del_mes_movil li .dia_mes{
 		background:#2f8391;
-		font-weight:bold;
 		position:absolute;
 		padding:4.5px 10px;
 	}
@@ -145,7 +142,6 @@
 
 	section article #dias_del_mes_movil li ul .total_dia{
 		border-top:3px solid #88ced9;
-		font-weight:bold;
 	}
 
 	section article footer{
@@ -210,14 +206,15 @@ DISPOSITIVOS MOVILES
 	}
 
 	main{
-		width:120%;
+		width:110%;
+		margin-left:-30%;
 		/webkit-transition: margin 1s; /* Safari */
     	transition: margin 1s;
 
 	}
 
 	main:hover{
-		margin-left:-25%;
+		margin-left:0px;
 	}
 
 	/*main #principal:hover{
@@ -228,10 +225,14 @@ DISPOSITIVOS MOVILES
 
 	main #nav-operaciones{
 		margin-top:50px;
+		margin-right:30%;
 	}
 
-	main #nav-operaciones #opciones li{
-		width:20%;
+	main #nav-operaciones #opciones{
+		margin-top:50px;
+	}
+
+	main #opciones li{
 		display:list-item;
 	}
 
@@ -269,10 +270,11 @@ DISPOSITIVOS MOVILES
 
 	section h2{
 		display:block;
+		margin-left:40%;
 	}
 
 	section article{
-		width:60%;
+		width:65%;
 		margin-bottom:1px;
 		margin-left:40%;
 	}
@@ -283,6 +285,22 @@ DISPOSITIVOS MOVILES
 
 	section article #dias_del_mes_movil, section article footer{
 		display:block;
+	}
+
+}
+
+@media only screen and (max-width : 510px) {
+
+	main #nav-operaciones #opciones li a{
+		font-size: 8pt;
+	}
+
+}
+
+@media only screen and (max-width : 380px) {
+
+	main #nav-operaciones #opciones li a{
+		font-size: 5pt;
 	}
 
 }
