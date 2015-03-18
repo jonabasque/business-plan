@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app="BusinessPlans">
 
 	<head>
 		<meta charset="UTF-8">
@@ -9,26 +9,19 @@
 
 	</head>
 
-	<body>
+	<body ng-controller="businessPlanController as bpCtrl">
 
-			<header>
-
+			<header >
 				<img src="images/logo.png" />
-				<h2>Nombre del Plan de negocio</h2>
+				<h2>{{bpCtrl.bp.titulo}}</h2>
 				<nav id="nav-ejercicios">
-
-					<ul>
-
-						<li id="ant_ejercicio"><a href="#">Ant.</a></li>
-						<li><a href="#">2015</a></li>
-						<li><a href="#">2016</a></li>
-						<li><a href="#">2017</a></li>
-						<li><a href="#">2018</a></li>
-						<li id="sig_ejercicio"><a href="#">Sig.</a></li>
-						<li id="ejercicio_mas"><a href="#">+</a></li>
-						<li id="ejercicio_nuevo"><a href="#">NUEVO</a></li>
-
-					</ul>
+				    <ul>
+				        <li id="ant_ejercicio"><<</li>
+				        <li ng-repeat="ejercicio in bpCtrl.bp.ejercicios">{{ejercicio}}</li>
+				        <li id="sig_ejercicio">>></li>
+				        <li id="ejercicio_mas">+</li>
+				    </ul>
+				</nav>
 
 			</header>
 
@@ -38,13 +31,7 @@
 
 					<ul id="opciones">
 
-						<li><img src="images/dolar.png" /><a href="gastos.html">GASTOS</a></li>
-						<li><img src="images/dolar.png" /><a href="compras.html">COMPRAS</a></li>
-						<li><img src="images/dolar.png" /><a href="ventas.html">VENTAS</a></li>
-						<li><img src="images/dolar.png" /><a href="inversiones.html">INVERSIONES</a></li>
-						<li><img src="images/dolar.png" /><a href="RRHH.html">RRHH</a></li>
-						<li><img src="images/dolar.png" /><a href="resultados_mes.html">RESULTADOS</a></li>
-
+						<li ng-repeat="operation in bpCtrl.bp.operations"><img src="images/{{operation | lowercase}}.png" />{{operation}}</li>
 					</ul>
 
 				</nav>
@@ -54,10 +41,10 @@
 					<h2> GASTOS </h2>
 					<div>
 
-						<article class="meses">
+						<article ng-repeat="mes in bpCtrl.bp.meses" class="meses">
 
 							<header>
-								<h4>ENERO</h4>
+								<h4>{{mes | uppercase}}</h4>
 							</header>
 
 							<ul id="dias_del_mes_movil">
@@ -102,73 +89,6 @@
 							<footer>
 						</article>
 
-						<article>
-							<header>
-								<h4>FEBRERO</h4>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>MARZO</h4>
-								<ul></ul>
-							</header>
-						</article>
-
-						<article>
-							<header>
-								<h4>ABRIL</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>MAYO</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>JUNIO</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>JULIO</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>AGOSTO</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>SEPTIEMBRE</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>OCTUBRE</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>NOVIEMBRE</h4>
-								<ul></ul>
-							</header>
-						</article>
-						<article>
-							<header>
-								<h4>DICIEMBRE</h4>
-								<ul></ul>
-							</header>
-						</article>
-
 					</div>
 
 				</section> <!-- /tipo asiento section -->
@@ -186,7 +106,8 @@
 
 			</footer>
 
-
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<script src="js/app.js"></script>
 	</body>
 
 </html>
