@@ -52,7 +52,7 @@
 	}
 
 	header nav ul #ejercicio_mas{
-		display:none;
+		
 	}
 
 
@@ -88,11 +88,14 @@
 		text-align:right;
 		margin-bottom:1px;
 		display:inline;
+		margin-right:5px;
 	}
 
 	main #nav-operaciones #opciones li img{
 		width:30px;
 		height:30px;
+		border:2px solid #2f8391;
+		border-radius:10px;
 	}
 
 	main #nav-operaciones #opciones li a{
@@ -104,7 +107,7 @@
 	}
 
 	section article{
-		width:20%;
+		width:80%;
 		min-width:200px;
 		margin-bottom:1px;
 	}
@@ -115,11 +118,13 @@
 
 	section article header{
 		background:#2f8391;
-		padding-left:10px;
+		padding-left:2%;
+		width:20%;
 	}
 
-	section article #dias_del_mes_movil, section article footer{
-		display:none;
+	section article #dias_del_mes_movil, section article .pie_mes{
+		margin-left:30%;
+		margin-right:-17%;
 	}
 
 	section article #dias_del_mes_movil li{
@@ -267,6 +272,7 @@ DISPOSITIVOS MOVILES
 
 	main #nav-operaciones #opciones li img{
 		width:32%;
+		border:0px;
 	}
 
 	main #nav-operaciones #opciones li a{
@@ -338,6 +344,10 @@ DISPOSITIVOS MOVILES
 		margin-left:16%;
 	}
 
+	section article header{
+		width:98%;
+	}
+
 	section article #dias_del_mes_movil li{
 	}
 	
@@ -352,9 +362,13 @@ DISPOSITIVOS MOVILES
 		margin-top:30px;
 	}
 
-	section article #dias_del_mes_movil, section article footer{
+
+	section article #dias_del_mes_movil, section article .pie_mes{
+		margin-left:0px;
+		margin-right:0px;
 		display:block;
 	}
+
 
 }
 
