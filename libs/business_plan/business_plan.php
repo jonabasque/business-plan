@@ -17,6 +17,10 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   private $inversion_inicial; //Incluimos dentro la financiación inicial
 
+  private $inversiones = [];
+
+  private $RRHH = [];
+
   private $ejercicios = [];
 
   public function __construct(User $user, $sector, $locale, $title){
@@ -25,24 +29,25 @@ class BusinessPlan {//extends EjercicioFiscal {
     $this->title = $title;
     $this->sector = $sector;
     $this->locale = $locale;
+  }
+
+  //No me convence
+  public function setInversion(Inversion $inversion){
+
+    $this->inversiones[] = $inversion;
 
   }
 
-  public function setInversion(Inversion $inversion){
+  //No me convence
+  public function setRRHH(RecursoHumano $RRHH){
 
-    $this->inversion = $inversion;
+    $this->RRHH[] = $RRHH;
 
   }
 
   public function setEjercicio(EjercicioFiscal $ejercicio){
 
     $this->ejercicios[] = $ejercicio;
-
-  }
-
-  public function setRRHH( RRHH $RRHH){
-
-    $this->RRHH = $RRHH;
 
   }
 
@@ -58,13 +63,38 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   }
 
-  public function getEjercicios(){
+  public function getEjercicios($year){
 
-      return $this->ejercicios;
+      //return $this->ejercicios;
+
+    foreach($this->ejercicios as $ejercicio){
+      			if ($ejercicio->year == $year) return $ejercicio;
+			}
+	return "No se ha encontrado el ejercicio fiscal solicitado.";
+
+  }
+
+  public function getInversion($code){
+
+    foreach($this->inversiones as $inversion){
+      			if ($inversion->code == $yecode) return $inversion;
+			}
+	return "No se ha encontrado la inversion solicitada.";
+
+  }
+
+  //No me convence
+  public function getRRHH($code){
+
+    foreach($this->inversiones as $inversion){
+      			if ($inversion->code == $code) return $inversion;
+			}
+	return "No se ha encontrado el recurso humano solicitado.";
 
   }
 
 }//fin clase BusinessPlan
+
 
 //clase usuario
 class User {
