@@ -2,7 +2,7 @@
 
 namespace asketic\business_plan;
 
-require("registro.php");
+//require("registro.php");
 
 class Venta extends Registro{
 

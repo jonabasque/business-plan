@@ -1,8 +1,12 @@
 <?php
 namespace asketic\business_plan;
 
+//se llama a registro desde aquí para que compra y venta la puedan extender
 require_once("compra.php");
 require_once("venta.php");
+require_once("gasto.php");
+require_once("inversion.php");
+require_once("recurso_humano.php");
 
 use asketic\business_plan\Compra as Compra;
 use asketic\business_plan\Venta as Venta;
@@ -23,10 +27,14 @@ class EjercicioFiscal {
   //guardará un objeto por dia ¿¿O POR TRANSACCION MEJOR?? empezando por el primero del inicio fiscal
   //Cada objeto tiene atributos: codigo, descripcion, fecha, concepto, importe, unidades.
   public $compras = [];
-  protected $ventas = [];
-  protected $RRHH   = [];
-  protected $gastos = [];
-  protected $inversion = []; //incluye la financiación, y la inversion en inmovilizado. Se invertir en cualquier momento.
+  public $ventas = [];
+  public $RRHH   = [];
+  public $gastos = [];
+  public $inversiones = []; //incluye la financiación, y la inversion en inmovilizado. Se invertir en cualquier momento.
+
+  //Prueba con movimiento dentro de lo que sería dentro del ejercicio fiscal, para ver si gastos, ventas y demas se podrían
+  //incluir en un único array, en vez de en varios
+  public $movimientos = [];
 
   public function __construct($type, $year, $started = "August"){
 
@@ -54,12 +62,14 @@ class EjercicioFiscal {
 
       //necesito que empiece cuando sea igual al periodo y continue hasta el final.
       if($key == $this->started){
+      	$this->movimientos[$key] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
         $this->compras[$key] = [];
         $this->ventas[$key] = [];
         $this->RRHH[$key] = [];
         $this->gastos[$key] = [];// se le podría decir que sea de 31 posiciones?
         $init = $count;
       }elseif($init != null){
+      	$this->movimientos[$key] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
         $this->compras[$key] = [];
         $this->ventas[$key] = [];
         $this->RRHH[$key] = [];
@@ -70,6 +80,7 @@ class EjercicioFiscal {
 
     foreach($this->meses as $key => $value){
       if($key != $init){
+      	$this->movimientos[$key] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
         $this->compras[$key] = [];
         $this->ventas[$key] = [];
         $this->RRHH[$key] = [];
@@ -81,6 +92,7 @@ class EjercicioFiscal {
     foreach($this->meses as $mes => $days){
 
       for($i = 1; $i <= $days; $i++){
+      	$this->movimientos[$key] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
         $this->compras[$mes][$i] = [];
         $this->ventas[$mes][$i] = [];
         $this->gastos[$mes][$i] = [];
@@ -92,9 +104,77 @@ class EjercicioFiscal {
 
   }
 
+  ////////////////////////////////////////////////////////////////////////
+
+
+  //Guarda cada compra en el array del día (ahora es más general, y guarda un movimiento)
+  public function setMovimiento($code, $concept, $importe, $units){
+
+  	$opcion=substr($code,0,1);
+
+  	switch($opcion){
+
+  		case "C"://compras
+  			$movimiento = new Compra($code, $concept, $importe, $units);
+  			//$mes = $movimiento->date['month'];
+   			//$day = $movimiento->date['mday'];
+    		//$this->compras[$mes][$day][] = $movimiento;
+  			break;
+		case "V"://compras
+  			$movimiento = new Venta($code, $concept, $importe, $units);
+  			//$mes = $movimiento->date['month'];
+   			//$day = $movimiento->date['mday'];
+    		//$this->compras[$mes][$day][] = $movimiento;
+  			break;
+  		case "G"://compras
+  			$movimiento = new Gasto($code, $concept, $importe, $units);
+  			//$mes = $movimiento->date['month'];
+   			//$day = $movimiento->date['mday'];
+    		//$this->compras[$mes][$day][] = $movimiento;
+  			break;
+  		case "I"://compras
+  			$movimiento = new Inversion($code, $concept, $importe, $units);
+  			//$mes = $movimiento->date['month'];
+   			//$day = $movimiento->date['mday'];
+    		//$this->compras[$mes][$day][] = $movimiento;
+  			break;
+  		case "R"://compras
+  			$movimiento = new RecursoHumano($code, $concept, $importe, $units);
+  			//$mes = $movimiento->date['month'];
+   			//$day = $movimiento->date['mday'];
+    		//$this->compras[$mes][$day][] = $movimiento;
+  			break;
+
+  	}
+    //comprobar día para insertar en el día que sea.
+    $mes = $movimiento->date['month'];
+   	$day = $movimiento->date['mday'];
+    $this->movimientos[$mes][$day][] = $movimiento;
+
+  }
+
+  //Antes getCompra
+  public function getMovimiento($code){
+
+  	//De nuevo, utilizamos el array de movimientos para intentar traer el elegido (compra, venta, gastos, ...)
+  	foreach($this->movimientos as $month => $mes){
+			    foreach($mes as $day => $dia){
+			        foreach($dia as $registro ){
+			        	if($code == $registro->code){
+			        		return $registro;
+			          	}
+			        }
+			    }
+			}
+	return false;
+
+  }
+
+  ////////////////////////////////////////////////////////////////////////
+
 
   //Guarda cada compra en el array del día
-  public function setCompra($code, $concept, $importe, $units){
+  /*public function setCompra($code, $concept, $importe, $units){
 
     $compra = new Compra($code, $concept, $importe, $units);
     //comprobar día para insertar en el día que sea.
@@ -116,8 +196,7 @@ class EjercicioFiscal {
       }
     }
 
-  }
-
+  }*/
 
   //Devolvemos true si es bisiesto
   private function isFebruaryDays($year){
