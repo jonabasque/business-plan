@@ -4,7 +4,7 @@ namespace asketic\business_plan;
 
 //require("registro.php");
 
-class Venta extends Registro{
+class Venta extends Movimiento{
 
   public function __construct($code, $concept, $imp, $units ){
 

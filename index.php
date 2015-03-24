@@ -4,7 +4,7 @@
 echo "Planes de negocio<br \>";
 
 //llamamos a business_plan y ejercicios_fiscales, y aparte a calculadora, para algunas operaciones
-require_once("libs/business_plan/registro.php");
+require_once("libs/business_plan/movimiento.php");
 require_once("libs/business_plan/inversion.php");
 require_once("libs/business_plan/recurso_humano.php");
 require_once("libs/business_plan/business_plan.php");
@@ -39,37 +39,41 @@ echo $ejercicio1->meses["February"].", ".$ejercicio1->type."<br /><br />";
 //Ejemplo de definición de una COMPRA //////////////////////////////////
 //Datos de la COMPRA
 $code = "C0005";
-$concept = "Compra de licencia de Windows";
-$importe = 100;
-$units = 5;
-$ejercicio1->setMovimiento($code, $concept, $importe, $units);
+$var_array = array("concept" =>"Compra de licencia de Windows",
+                        "importe"=>"100",
+                        "units"=>"5");
+$ejercicio1->setMovimiento($code, $var_array);
+echo "<br />";
 
 
 //MAS MOVIMIENTOS, QUE DEMUESTRAN QUE SE PUEDE INCLUIR CUALQUIER MOVIMIENTO
 $code = "V0005";
-$concept = "Venta placa arduino";
-$importe = 150;
-$units = 3;
-$ejercicio1->setMovimiento($code, $concept, $importe, $units);
-
+$var_array = array("concept" =>"Venta placa arduino",
+                        "importe"=>"150",
+                        "units"=>"3");
+$ejercicio1->setMovimiento($code, $var_array);
+echo "<br />";
 
 $code = "G0005";
-$concept = "Alquiler local";
-$importe = 400;
-$units = 1;
-$ejercicio1->setMovimiento($code, $concept, $importe, $units);
+$var_array = array("concept" =>"Alquiler local",
+                        "importe"=>"400",
+                        "units"=>"1");
+$ejercicio1->setMovimiento($code, $var_array);
+echo "<br />";
 
 $code = "I0005";
-$concept = "Inversion en proveedores largo plazo";
-$importe = 600;
-$units = 2;
-$ejercicio1->setMovimiento($code, $concept, $importe, $units);
+$var_array = array("concept" =>"Inversion en proveedores largo plazo",
+                        "importe"=>"600",
+                        "units"=>"2");
+$ejercicio1->setMovimiento($code, $var_array);
+echo "<br />";
 
 $code = "R0005";
-$concept = "Contratacion ingeniero tecnico";
-$importe = 800;
-$units = 1;
-$ejercicio1->setMovimiento($code, $concept, $importe, $units);
+$var_array = array("concept" =>"Contratacion ingeniero tecnico",
+                        "importe"=>"800",
+                        "units"=>"1");
+$ejercicio1->setMovimiento($code, $var_array);
+echo "<br />";
 
 //Aparecerán todos los anteriores movimientos dentro del día de hoy
 //var_dump($ejercicio1->movimientos);
@@ -82,14 +86,9 @@ if($ejercicio1->getMovimiento("C0005")!=false){
 	echo "No se ha encontrado el movimiento solicitado.";
 }
 
-
-echo "<strong>";
-var_dump($ejercicio1->movimientos);
-echo "</strong>";
-
 ////////////////////////////////////////////////////////////////////////
 
-echo "<br \><br \><u> Instancia de un plan de NEGOCIO</u><br \><br \>";
+echo "<br \><u> Instancia de un plan de NEGOCIO</u><br \><br \>";
 
 //idioma, ubicacion
 $locale=["Inglés","EEUU"];
@@ -98,9 +97,11 @@ $locale=["Inglés","EEUU"];
 $businessPlan = new BusinessPlan($user,"Alimentacion",$locale,"Ekodenda");
 
 //agregamos varios ejercicios fiscales al plan de negocio
-$businessPlan->setEjercicio($ejercicio1);
-$businessPlan->setEjercicio($ejercicio2);
+$businessPlan->setEjercicio("anual","2018","August");
 
+echo "<strong>";
+var_dump($businessPlan->ejercicios[2018]);
+echo "</strong>";
 
 //Inversion de prueba para meter desde la clase businessPlan
 $code = "I0010";
@@ -108,8 +109,14 @@ $concept = "Inversion en proveedores corto y medio plazo";
 $importe = 1000;
 $units = 3;
 
+echo "<br /><br />";
+$var_array = array("concept" =>"Renovacion tecnico informatico",
+                        "importe"=>"600",
+                        "units"=>"1");
+$businessPlan->ejercicios[2018]->setMovimiento("R0011",$var_array);
+
+
 $inversion1 = new Inversion($code, $concept, $importe, $units);
-$businessPlan->setInversion($inversion1);
 
 //Recurso humano de prueba para meter desde la clase businessPlan
 
@@ -119,17 +126,12 @@ $importe = 800;
 $units = 1;
 
 $recurso_humano1 = new RecursoHumano($code, $concept, $importe, $units);
-$businessPlan->setRRHH($recurso_humano1);
 
 //echo $businessPlan->user->nombre;
 echo "<br /><br />";
 echo $businessPlan->getSector();
 echo "<br />";
 echo $businessPlan->getTitle();
-echo "<br />";
-echo "<strong>";
-var_dump($businessPlan->getEjercicios(2016)); //muestra todo el contenido del ejercicio fiscal buscado
-echo "</strong>";
 echo "<br />";
 
 echo "<br /><br /><u> Calculadora </u><br />";

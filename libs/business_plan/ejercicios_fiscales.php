@@ -107,8 +107,12 @@ class EjercicioFiscal {
   ////////////////////////////////////////////////////////////////////////
 
 
-  //Guarda cada compra en el array del día (ahora es más general, y guarda un movimiento)
-  public function setMovimiento($code, $concept, $importe, $units){
+  //Guarda cada registro en el array del día, pasamos el codigo con un uno sumado
+  public function setMovimiento($code, $var_array){
+
+    extract($var_array);
+
+    echo "$concept, $importe, $units, $wddx_tamaño\n";
 
   	$opcion=substr($code,0,1);
 
@@ -116,40 +120,24 @@ class EjercicioFiscal {
 
   		case "C"://compras
   			$movimiento = new Compra($code, $concept, $importe, $units);
-  			//$mes = $movimiento->date['month'];
-   			//$day = $movimiento->date['mday'];
-    		//$this->compras[$mes][$day][] = $movimiento;
   			break;
-		case "V"://compras
+		  case "V"://ventas
   			$movimiento = new Venta($code, $concept, $importe, $units);
-  			//$mes = $movimiento->date['month'];
-   			//$day = $movimiento->date['mday'];
-    		//$this->compras[$mes][$day][] = $movimiento;
   			break;
-  		case "G"://compras
+  		case "G"://gasto
   			$movimiento = new Gasto($code, $concept, $importe, $units);
-  			//$mes = $movimiento->date['month'];
-   			//$day = $movimiento->date['mday'];
-    		//$this->compras[$mes][$day][] = $movimiento;
   			break;
-  		case "I"://compras
+  		case "I"://inversion
   			$movimiento = new Inversion($code, $concept, $importe, $units);
-  			//$mes = $movimiento->date['month'];
-   			//$day = $movimiento->date['mday'];
-    		//$this->compras[$mes][$day][] = $movimiento;
   			break;
-  		case "R"://compras
+  		case "R"://recurso humano
   			$movimiento = new RecursoHumano($code, $concept, $importe, $units);
-  			//$mes = $movimiento->date['month'];
-   			//$day = $movimiento->date['mday'];
-    		//$this->compras[$mes][$day][] = $movimiento;
   			break;
-
   	}
-    //comprobar día para insertar en el día que sea.
+
     $mes = $movimiento->date['month'];
    	$day = $movimiento->date['mday'];
-    $this->movimientos[$mes][$day][] = $movimiento;
+    return $this->movimientos[$mes][$day][] = $movimiento;
 
   }
 
@@ -166,37 +154,10 @@ class EjercicioFiscal {
 			        }
 			    }
 			}
-	return false;
+	   return false;
 
   }
 
-  ////////////////////////////////////////////////////////////////////////
-
-
-  //Guarda cada compra en el array del día
-  /*public function setCompra($code, $concept, $importe, $units){
-
-    $compra = new Compra($code, $concept, $importe, $units);
-    //comprobar día para insertar en el día que sea.
-    $mes = $compra->date['month'];
-    $day = $compra->date['mday'];
-    $this->compras[$mes][$day][] = $compra;
-
-  }
-
-  public function getCompra($code){
-
-    foreach($this->compras as $month => $mes){
-      foreach($mes as $day => $dia){
-        foreach($dia as $registro ){
-          if($code == $registro->code){
-            return $registro;
-          }
-        }
-      }
-    }
-
-  }*/
 
   //Devolvemos true si es bisiesto
   private function isFebruaryDays($year){
