@@ -16,5 +16,12 @@
                 templateUrl: 'partials/bp-nav-operaciones.html',
                 controller: 'bpController'
             };
+        })
+        .directive('bpNavMeses', function(){
+            return {
+                restrict: 'E',
+                templateUrl: 'partials/bp-nav-meses.html',
+                controller: 'bpController'
+            };
         });
 })();

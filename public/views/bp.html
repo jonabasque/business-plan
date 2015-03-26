@@ -1,15 +1,20 @@
-<h2> GASTOS </h2>
+<h2> {mes | uppercase} </h2>
 <div>
 
-    <article ng-repeat="mes in bp.meses" class="meses">
+    <aside>
+        <bp-nav-meses></bp-nav-meses>
+    </aside>
+    <article class="meses">
 
         <header>
-            <h4>{{mes | uppercase}}</h4>
+            <h4>{{mes}}</h4>
         </header>
 
         <ul id="dias_del_mes_movil">
 
-            <li><div class="dia_mes">1</div><!-- Ejemplo para un día -->
+            <li>
+
+                <div class="dia_mes">1</div><!-- Ejemplo para un día -->
 
                 <ul>
 

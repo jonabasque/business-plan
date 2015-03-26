@@ -2,7 +2,7 @@
 
     <ul id="opciones">
 
-        <li ng-repeat="operation in bp.operations">{{operation}}&nbsp;<img src="#" /></li>
+        <li ng-repeat="operation in bp.operations" ><a href="#" ng-click="tabs.selectTab($index)">{{operation}}&nbsp;<img src="#" /></a></li>
     </ul>
 
 </nav>
