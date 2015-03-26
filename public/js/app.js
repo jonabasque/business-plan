@@ -12,8 +12,8 @@
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/bp.html',
-                //ahora le inyectamos el contrlador, ahora estamos usando Ajax, vamos a ver después como evitarlo.
+                templateUrl: 'views/bp-mini.html',
+                //TODO: que se vea la grande en resoluciones grandes, quizás con un metodo por default en el controlador, o con tempales dinamicos.
                 controller: 'bpController'
             });
     }]);
