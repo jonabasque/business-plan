@@ -6,8 +6,8 @@
             $scope.bp = {
                 titulo : "ASkeTIC Coop",
                 ejercicios : ['2015','2016','2017'],
-                operations : ['Gastos', 'Compras', 'Ventas', 'Inversiones', 'RRHH'],
-                meses : ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+                operations : ['Inversiones','Ventas', 'Compras', 'Gastos', 'RRHH'],
+                meses : ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
             };
 
             $scope.movimientos = {

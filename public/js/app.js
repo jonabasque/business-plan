@@ -12,7 +12,7 @@
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/bp-big.html',
+                templateUrl: 'views/bp-mini.html',
                 //TODO: que se vea la grande en resoluciones grandes, quizás con un metodo por default en el controlador, o con tempales dinamicos.
                 controller: 'bpController'
             });

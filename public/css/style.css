@@ -107,7 +107,7 @@
 	}
 
 	#principal{
-		margin-bottom:200px;
+		margin-bottom:215px;
 	}
 
 	section h2{
@@ -143,7 +143,6 @@
 	section article{
 		width:80%;
 		min-width:200px;
-		margin-bottom:130px;
 	}
 
 	section .meses{
@@ -193,21 +192,28 @@
 	}
 
 	section article #dias_del_mes_movil li #dias_de_un_mes{
-		display:flex;
-		margin-top:-5px;
+		margin-top:-9px;
 		margin-bottom:20px;
-		justify-content:space-between;
+		display:flex;
 	}
 
 	section article #dias_del_mes_movil li #dias_de_un_mes li{
 		background:#2f8391;
 		text-align:center;
-		padding:10px 1.5%;
+		padding:10px 0px;
+		width:5%;
+		border:4px solid #231c18;
+	}
+
+	section article #dias_del_mes_movil li #dias_de_un_mes #ant_ejercicio,
+	section article #dias_del_mes_movil li #dias_de_un_mes #sig_ejercicio{
+		width:12%;
 	}
 
 	section article #dias_del_mes_movil li #dias_de_un_mes li:hover{
 		background:#002255;
 		color:#2f8391;
+		border:4px solid #2f8391;
 	}
 
 	section article #dias_del_mes_movil li ul li{
@@ -307,30 +313,30 @@ DISPOSITIVOS MOVILES
 	header img{
 		width:40px;
 		height:40px;
-		margin-left:5%;
-		margin-bottom:-15px;
+		margin-left:2%;
+		margin-bottom:-8px;
 	}
 
 	header h2{
 		font-size:1em;
 		display:inline;
-		margin-left:10%;
+		margin-left:5%;
+		margin-top:25px;
 	}
 
 	header nav{
 	}
 
 	header #nav-ejercicios ul{
-		padding-top:0px;
-		height:33px;
+		padding:0;
 		display:flex;
-		background:#002255;
 	}
 
 	header #nav-ejercicios ul li{
-		height:20px;
+		height:25px;
 		width:25%;
 		margin-left:2px;
+		font-size:1.3em;
 	}
 
 	header nav ul #ant_ejercicio{
@@ -352,7 +358,7 @@ DISPOSITIVOS MOVILES
 	/*CAMBIAR*/
 	main #nav-operaciones{
 		margin:85px 0px 20px -15%;
-		width:22%;
+		width:28%;
 		padding:0px;
 		-webkit-transition: 1s;
 		transition: 1s;
@@ -364,10 +370,12 @@ DISPOSITIVOS MOVILES
 
 	main #nav-operaciones #opciones{
 		background:transparent;
+		padding:0px;
 		padding-top:10px;
 	}
 
 	main #nav-operaciones #opciones li{
+		padding:0px;
 		display:list-item;
 		width:100%;
 		-webkit-transition: 1s;
@@ -383,30 +391,12 @@ DISPOSITIVOS MOVILES
 	}
 
 	main #nav-operaciones #opciones li a{
+		padding:2% 5px;
 		margin-left:10px;
 		display:block;
+		background:#2f8391;
+		font-size:1em;
 	}
-
-
-	/********* ANTIGUOS ***************/
-
-
-
-	/*main #nav-operaciones{
-		margin-top:85px;
-		margin-left:-40%;
-	}
-
-	main #nav-operaciones #opciones{
-		margin-left:0px;
-	}
-
-	main #opciones li{
-		display:list-item;
-	}
-
-	main #nav-operaciones #opciones li a{
-	}*/
 
 	/**************************************/
 
@@ -434,7 +424,7 @@ DISPOSITIVOS MOVILES
 	/**************************************/
 
 	#principal{
-		margin-top:-275px;
+		margin-top:-235px;
 	}
 
 	#principal .ocultar{
@@ -443,35 +433,48 @@ DISPOSITIVOS MOVILES
 
 	section h2{
 		display:block;
-		width:65%;
-		margin-left:16%;
+		width:66%;
+		margin-left:17%;
 	}
 
 	section article{
 		width:65%;
 		margin-bottom:1px;
-		margin-left:16%;
+		margin-left:17%;
 	}
 
 	section article header{
-		width:98%;
+		width:96%;
+		padding:10px 2%;
 		display:block;
 	}
 
 	section article #dias_del_mes_movil li{
-		background:#88ced9;
+		margin-top:-4px;
+		margin-bottom:-10px;
 	}
-
+	
+	section article #dias_del_mes_movil li ul{
+		margin-left:10%;
+		width:90%;
+	}
 
 	section article #dias_del_mes_movil li ul li{
 		background:#bbe2e9;
+		width:98.45%;
+		margin-bottom:6px;
 	}
-	
+
+	section article #dias_del_mes_movil li ul .resaltado{
+		height:20px;
+	}
 
 	section article #dias_del_mes_movil li .dia_mes{
-		width:5%;
-		padding:0;
-		margin:0;
+		width:7%;
+		padding:5px 0px;
+		margin:-4px 0 0 0;
+		left:17%;
+		text-align:center;
 	}
 
 	section .meses{
@@ -480,12 +483,43 @@ DISPOSITIVOS MOVILES
 
 	section article #dias_del_mes_movil li ul li div{
 		color:black;
+		display:inline-block;
+		width:48.5%;
+
 	}
 
-	section article #dias_del_mes_movil, section article .pie_mes{
+	section article #dias_del_mes_movil li ul li div .alinear_derecha{
+		text-align:right;
+	}
+
+	section article #dias_del_mes_movil{
 		margin-left:0px;
 		margin-right:0px;
+		margin-top:2px;
 		display:block;
+	}
+
+	section article .pie_mes{
+		margin-left:0px;
+		margin-right:0px;
+		margin-top:2px;
+		display:block;
+		height:15px;
+	}
+
+	section article .pie_mes menu ul{
+		margin-top:-2px;
+	}
+
+	section article .pie_mes menu ul li{
+		padding:0px;
+		height:10px;
+	}
+
+	section article .pie_mes menu ul li a{
+		padding:5px 2%;
+		font-size:1em;
+		height:10px;
 	}
 
 
