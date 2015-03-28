@@ -8,7 +8,7 @@ class Movimiento{
   public $date;
   private $concept;
   private $imp;
-  private $units;
+  public $units;
 
   public function __construct($concept, $imp, $units){
 

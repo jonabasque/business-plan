@@ -7,6 +7,7 @@ echo "Planes de negocio<br \>";
 require_once("libs/business_plan/movimiento.php");
 require_once("libs/business_plan/inversion.php");
 require_once("libs/business_plan/recurso_humano.php");
+require_once("libs/business_plan/resultados.php");
 require_once("libs/business_plan/business_plan.php");
 require_once("libs/business_plan/ejercicios_fiscales.php");
 require_once("libs/dojo-calculadora/class/calculadora.php");
@@ -17,6 +18,7 @@ use asketic\business_plan\Inversion as Inversion;
 use asketic\business_plan\RecursoHumano as RecursoHumano;
 use asketic\business_plan\EjercicioFiscal as EjercicioFiscal;
 use asketic\business_plan\BusinessPlan as BusinessPlan;
+use asketic\business_plan\Resultados as Resultados;
 use asketic\business_plan\Compras as Compras;
 
 echo "<b>ESTE ES EL INDICE DE LA APLICACION</b><br \>";
@@ -33,7 +35,7 @@ echo "<br \><br \><u> Instancia de un EJERCICIO FISCAL (2016)</u><br \><br \>";
 $ejercicio1 = new EjercicioFiscal("mensual","2016");
 $ejercicio2 = new EjercicioFiscal("mensual","2017");
 
-//Mostramos los d´ias de un mes al azar y el tipo, que puede ser mensual o anual
+//Mostramos los dias de un mes al azar y el tipo, que puede ser mensual o anual
 echo $ejercicio1->meses["February"].", ".$ejercicio1->type."<br /><br />";
 
 //Ejemplo de definición de una COMPRA //////////////////////////////////
@@ -44,47 +46,6 @@ $var_array = array("concept" =>"Compra de licencia de Windows",
                         "units"=>"5");
 $ejercicio1->setMovimiento($code, $var_array);
 echo "<br />";
-
-
-//MAS MOVIMIENTOS, QUE DEMUESTRAN QUE SE PUEDE INCLUIR CUALQUIER MOVIMIENTO
-$code = "V0005";
-$var_array = array("concept" =>"Venta placa arduino",
-                        "importe"=>"150",
-                        "units"=>"3");
-$ejercicio1->setMovimiento($code, $var_array);
-echo "<br />";
-
-$code = "G0005";
-$var_array = array("concept" =>"Alquiler local",
-                        "importe"=>"400",
-                        "units"=>"1");
-$ejercicio1->setMovimiento($code, $var_array);
-echo "<br />";
-
-$code = "I0005";
-$var_array = array("concept" =>"Inversion en proveedores largo plazo",
-                        "importe"=>"600",
-                        "units"=>"2");
-$ejercicio1->setMovimiento($code, $var_array);
-echo "<br />";
-
-$code = "R0005";
-$var_array = array("concept" =>"Contratacion ingeniero tecnico",
-                        "importe"=>"800",
-                        "units"=>"1");
-$ejercicio1->setMovimiento($code, $var_array);
-echo "<br />";
-
-//Aparecerán todos los anteriores movimientos dentro del día de hoy
-//var_dump($ejercicio1->movimientos);
-
-//En las siguientes líneas se cambia la fecha de uno de los movimientos
-if($ejercicio1->getMovimiento("C0005")!=false){
-	$movimiento = $ejercicio1->getMovimiento("C0005");
-	$movimiento->date = $movimiento->updateDate("12/07/2030");
-}else{
-	echo "No se ha encontrado el movimiento solicitado.";
-}
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -99,10 +60,6 @@ $businessPlan = new BusinessPlan($user,"Alimentacion",$locale,"Ekodenda");
 //agregamos varios ejercicios fiscales al plan de negocio
 $businessPlan->setEjercicio("anual","2018","August");
 
-echo "<strong>";
-var_dump($businessPlan->ejercicios[2018]);
-echo "</strong>";
-
 //Inversion de prueba para meter desde la clase businessPlan
 $code = "I0010";
 $concept = "Inversion en proveedores corto y medio plazo";
@@ -110,22 +67,33 @@ $importe = 1000;
 $units = 3;
 
 echo "<br /><br />";
+
+//Creación de varios movimientos un día en concreto
 $var_array = array("concept" =>"Renovacion tecnico informatico",
                         "importe"=>"600",
                         "units"=>"1");
 $businessPlan->ejercicios[2018]->setMovimiento("R0011",$var_array);
 
+$var_array = array("concept" =>"Renovacion tecnico informatico",
+                        "importe"=>"800",
+                        "units"=>"1");
+$businessPlan->ejercicios[2018]->setMovimiento("R0012",$var_array);
+
+$var_array = array("concept" =>"Compra de varias fuentes de alimentación",
+                        "importe"=>"800",
+                        "units"=>"3");
+$businessPlan->ejercicios[2018]->setMovimiento("C0013",$var_array);
+
+$var_array = array("concept" =>"Renovacion de otro tipo de técnico",
+                        "importe"=>"900",
+                        "units"=>"1");
+$businessPlan->ejercicios[2018]->setMovimiento("R0011",$var_array);
+
+//var_dump($businessPlan);
 
 $inversion1 = new Inversion($code, $concept, $importe, $units);
 
 //Recurso humano de prueba para meter desde la clase businessPlan
-
-$code = "R0010";
-$concept = "Renovacion tecnico informatico";
-$importe = 800;
-$units = 1;
-
-$recurso_humano1 = new RecursoHumano($code, $concept, $importe, $units);
 
 //echo $businessPlan->user->nombre;
 echo "<br /><br />";
@@ -134,14 +102,19 @@ echo "<br />";
 echo $businessPlan->getTitle();
 echo "<br />";
 
-echo "<br /><br /><u> Calculadora </u><br />";
-$calculadora = new Calculadora();
+//RESULTADOS
+$businessPlan->resultados = new Resultados();
 
-$numeros=[1,5,2,8,6];
+$date = ["day" => "28", "month" => "March", "exercise" => "2018"];
 
-//calculo y formateo del resultado de la division
-echo "<br>division: ".number_format($calculadora->division(8,3),2);
-echo "<br>producto: ".number_format($calculadora->producto($numeros),2);
-echo "<br>suma: ".$calculadora->suma($numeros);
-echo "<br>resta: ".number_format($calculadora->resta(8,3.5),2);
-echo "<br>porcentaje: ".number_format($calculadora->porcentaje(10,20),2);
+//Se calcula el total de un día
+echo "<br /> Total de recursos humanos (27-03-2018): ".$businessPlan->resultados->totalDay($date,"recursos",$businessPlan)."<br /><br />";
+
+//Se calcula el total de un mes
+echo "<br /><br /> Total de recursos humanos (03-2018): ".$businessPlan->resultados->totalMonth($date,"recursos",$businessPlan)."<br /><br />";
+
+//Se calcula el total de un año/ejercicio fiscal
+echo "<br /><br /> Total de recursos humanos (2018): ".$businessPlan->resultados->totalExercise($date,"recursos",$businessPlan)."<br /><br />";
+
+//Se calcula el total del plan de negocio
+echo "<br /><br /> Total de recursos humanos (): ".$businessPlan->resultados->totalExercise($date,"recursos",$businessPlan)."<br /><br />";

@@ -23,6 +23,8 @@ class BusinessPlan {//extends EjercicioFiscal {
 
   public $ejercicios = [];
 
+  public $resultados; //Va a ser un objeto de la clase resultados
+
   public function __construct(User $user, $sector, $locale, $title){
 
     $this->user = $user;
@@ -45,6 +47,7 @@ class BusinessPlan {//extends EjercicioFiscal {
     foreach($this->ejercicios as $ejercicio){
             if ($ejercicio->year == $year) return $ejercicio;
       }
+
   return false;
 
   }

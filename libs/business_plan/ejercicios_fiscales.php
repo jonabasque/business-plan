@@ -92,7 +92,7 @@ class EjercicioFiscal {
     foreach($this->meses as $mes => $days){
 
       for($i = 1; $i <= $days; $i++){
-      	$this->movimientos[$key] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
+      	$this->movimientos[$mes][$i] = []; //Se prentende incluir aqui todos los movimientos (gastos, ventas, ...)
         $this->compras[$mes][$i] = [];
         $this->ventas[$mes][$i] = [];
         $this->gastos[$mes][$i] = [];
