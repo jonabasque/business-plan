@@ -59,6 +59,8 @@ $businessPlan = new BusinessPlan($user,"Alimentacion",$locale,"Ekodenda");
 
 //agregamos varios ejercicios fiscales al plan de negocio
 $businessPlan->setEjercicio("anual","2018","August");
+$businessPlan->setEjercicio("anual","2017","August");
+$businessPlan->setEjercicio("anual","2016","August");
 
 //Inversion de prueba para meter desde la clase businessPlan
 $code = "I0010";
@@ -118,3 +120,11 @@ echo "<br /><br /> Total de recursos humanos (2018): ".$businessPlan->resultados
 
 //Se calcula el total del plan de negocio
 echo "<br /><br /> Total de recursos humanos (): ".$businessPlan->resultados->totalExercise($date,"recursos",$businessPlan)."<br /><br />";
+
+//Intervalo personalizado
+$date_ini = ["day" => "26", "month" => "August", "exercise" => "2018"];
+$date_fin = ["day" => "28", "month" => "July", "exercise" => "2018"];
+
+
+//Se calcula el total de un intervalo de tiempo personalizado
+echo "<br /><br /> Total de recursos humanos (de... a...): ".$businessPlan->resultados->totalInterval($date_ini,$date_fin,"recursos",$businessPlan)."<br /><br />";

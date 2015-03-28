@@ -107,7 +107,7 @@ class Resultados {
 
   }
 
-  public function totalExercise($date,$type,$businessPlan){
+  public function totalExercise($date,$type,$businessPlan){//FUNCIONA
 
       //sacamos del array los indices $day, $month y $exercise
       extract($date);
@@ -163,14 +163,14 @@ class Resultados {
 
   }
 
-  //los indices de la segunda fecha deberan terminar con "_end"
-  public function totalInterval($date_ini,$date_end,$type){
+  //los indices de la segunda fecha deberan terminar con "_end". El intervalo podrá abarcar ejercicios fiscales
+  public function totalInterval($date_ini,$date_end,$type,$businessplan){
 
       //sacamos del array los indices $day, $month y $exercise
       extract($date_ini);
 
       //recogemos el objeto del ejercicio pedido
-      $ejercicio_ini = getEjercicio($exercise);
+      $ejercicio_ini = $businessplan->getEjercicio($exercise);
 
       //recogemos el mes pedido
       $mes_ini = $month;
@@ -179,67 +179,70 @@ class Resultados {
       $dia_ini = $day;
 
       //sacamos del array los indices $day, $month y $exercise
-      extract($date_fin);
+      extract($date_end);
 
       //recogemos el objeto del ejercicio pedido
-      $ejercicio_fin = getEjercicio($exercise);
+      $ejercicio_end = $businessplan->getEjercicio($exercise);
 
       //recogemos el mes pedido
-      $mes_fin = $month;
+      $mes_end = $month;
 
       //recogemos el dia pedido
-      $dia_fin = $day;
+      $dia_end = $day;
 
-      //recorremos los ejercicios fiscales
-      foreach($ejercicios as $ejercicio){
+      //preparamaos la variable del total inicializandola a cero
+      $total=0;
 
-        //Si el ejercicio fiscal inicial coincide con el actual
-        if(($ejercicio->year >= $ejercicio_ini->year)&&($ejercicio->year <= $ejercicio_fin->year)){
+      //recorremos los ejercicios fiscales del plan de negocio
+      foreach($businessplan->ejercicios as $ejercicio){
 
-          foreach($ejercicio->meses as $mes){
+        //Acotamos el intervalo por el año fiscal (para no tener que cargar todos los ejercicios fiscales)
+        if(($ejercicio->year >= $ejercicio_ini->year)&&($ejercicio->year <= $ejercicio_end->year)){
 
-            //Si el mes inicial coincide con el actual y el ejercicio fiscal es el inicial (inicio del intervalo)
-            if(($mes_ini == $mes)&&($ejercicio->year >= $ejercicio_ini->year)){
+          //recorremos los ejercicios fiscales, fijandonos en los meses
+          foreach($ejercicio->movimientos as $mes){
 
-                foreach($mes as $dia){
+            if(($ejercicio->year >= $ejercicio_ini->year)||($mes <= $mes_ini)||($mes >= $mes_fin)||($ejercicio->year <= $ejercicio_fin->year)){
 
-                  //Si el dia inicial coincide con el actual
-                  if($dia_ini == $dia){
+              //recorremos todos los dias de un mes
+              foreach($mes as $dia){
 
-                    //
+                if(($ejercicio->year >= $ejercicio_ini->year)||($dia <= $dia_ini)||($dia >= $dia_fin)||($ejercicio->year <= $ejercicio_fin->year)){
 
-                  }
+                  //recorremos todos los movimientos de un dia
+                  foreach($dia as $movimiento){
 
-                }
+                    if($type==NULL){
+
+                      $total = $total + $movimiento->imp;
+
+                    }else{
+
+                      //Recogemos del código y el tipo sólo la primera letra, y la pasamos a mayúscula
+                      $code = strtoupper(substr($movimiento->code,0,1));
+                      $type = strtoupper(substr($type,0,1));
+
+                      //Si la letra extraida coincide con el tipo de movimiento
+                      if($code==$type){
+                        $total = $total + $movimiento->imp;
+                      }
+             
+                    }//fin if
+
+                    var_dump($movimiento->imp);
+                    echo "<br><br>";
+
+                  }//fin foreach
+
+                }//fin if
+
+              }//fin foreach
 
             }//fin if
 
-            //si el mes no coincide con el último pedido y el ejercicio fiscal es menor o igual que el ultimo pedido (durante)
-            elseif(($mes != $mes_fin)||($ejercicio->year <= $ejercicio_fin->year)){
-
-              foreach($mes as $dia){
-
-                //Si el dia inicial coincide con el actual
-                if(($dia != $dia_fin)||($mes != $mes_fin)||($ejercicio->year < $ejercicio_fin->year)){
-
-                  //
-
-                }
-
-              }
-
-            }//fin else if
-
-            //Si el mes actual coincide con el último pedido y el ejercicio fiscal es menor o igual que el ultimo pedido (final del intervalo)
-            elseif(($mes == $mes_fin)&&($ejercicio->year <= $ejercicio_fin->year)){
-
-              return false;
-
-            }//fin elseif
-
           }//fin foreach
 
-        }//fin if principal
+        }//fin if
 
       }//fin foreach
 
@@ -247,7 +250,7 @@ class Resultados {
 
   }
 
-  public function totalBusinessPlan($date,$type,$businessPlan){
+  public function totalBusinessPlan($date,$type,$businessPlan){//FUNCIONA
 
       //sacamos del array los indices $day, $month y $exercise
       extract($date);
@@ -308,27 +311,37 @@ class Resultados {
   }
 
   //en el primer parametro vendra el valor concreto y el tipo de valor (day, month, ejercicio, interval o bp)
-  public function intervalFinder($interval, $intervaltype){
+  public function intervalFinder($interval, $intervaltype, $businessplan){
 
       switch($intervalType){
 
         case "day":
 
+
+
             break;
 
         case "month":
+
+
 
             break;
 
         case "exercise":
 
+
+
             break;
 
         case "interval":
 
+
+
             break;
 
         case "bp":
+
+
 
             break;
 
