@@ -317,7 +317,7 @@ class Resultados {
 
         case "day":
 
-
+        
 
             break;
 
@@ -357,13 +357,13 @@ class Resultados {
 
 
 
-  //Resultado importare
+  //Resultado importante y recoge el resultado de perdidas y ganacias
   public function perdidasGanancias(){
 
 
   }
 
-  //Resultado importante y recoge el resultado de perdidas y ganacias
+  //Resultado importante y recoge el balance de situacion
   public function balanceDeSituacion(){
 
   }
